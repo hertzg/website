@@ -7,8 +7,8 @@ function create ($mysqli, $user, &$scripts) {
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
-        $includes, $excludes);
+    request_valid_keyword_tag_offset($keyword,
+        $tag, $offset, $includes, $excludes);
 
     include_once "$fnsDir/compressed_js_script.php";
     $scripts = compressed_js_script('searchForm', '../../');

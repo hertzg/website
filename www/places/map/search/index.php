@@ -9,8 +9,7 @@ $id_users = $user->id_users;
 $fnsDir = '../../../fns';
 
 include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
-    $includes, $excludes);
+request_valid_keyword_tag_offset($keyword, $tag, $offset, $includes, $excludes);
 
 include_once '../../../lib/mysqli.php';
 

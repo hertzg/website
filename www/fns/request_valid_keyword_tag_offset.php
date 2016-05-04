@@ -1,7 +1,7 @@
 <?php
 
-function request_valid_keyword_tag_offset (
-    &$includes, &$excludes, $params = []) {
+function request_valid_keyword_tag_offset (&$keyword,
+    &$tag, &$offset, &$includes, &$excludes, $params = []) {
 
     include_once __DIR__.'/request_keyword_tag_offset.php';
     $values = request_keyword_tag_offset();
@@ -35,7 +35,5 @@ function request_valid_keyword_tag_offset (
 
     include_once __DIR__.'/parse_keyword.php';
     parse_keyword($keyword, $includes, $excludes);
-
-    return $values;
 
 }

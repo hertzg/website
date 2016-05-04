@@ -13,8 +13,8 @@ function create ($mysqli, $user, $wallet, &$scripts) {
         .compressed_js_script('searchForm', $base);
 
     include_once "$fnsDir/request_valid_keyword_tag_offset.php";
-    list($keyword, $tag, $offset) = request_valid_keyword_tag_offset(
-        $includes, $excludes, ['id' => $id]);
+    request_valid_keyword_tag_offset($keyword, $tag,
+        $offset, $includes, $excludes, ['id' => $id]);
 
     include_once "$fnsDir/Paging/limit.php";
     $limit = \Paging\limit();
