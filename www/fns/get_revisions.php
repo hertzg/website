@@ -3,7 +3,7 @@
 function get_revisions () {
     return [
         'css/barChart/compressed.css' => 8,
-        'css/calendarIcon/compressed.css' => 3,
+        'css/calendarIcon/compressed.css' => 4,
         'css/common/compressed.css' => 171,
         'css/confirmDialog/compressed.css' => 5,
         'css/contact/compressed.css' => 5,
