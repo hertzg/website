@@ -19,7 +19,7 @@ if (!$errors) {
     include_once 'fns/write_general_info.php';
     write_general_info($siteTitle, $domainName,
         $infoEmail, $siteBase, $numReverseProxies, $https,
-        $signupEnabled, $autoUpdateEnabled, $errors);
+        $signupEnabled, $autoUpdateEnabled, $errors, $changed);
 }
 
 include_once "$fnsDir/redirect.php";
@@ -45,6 +45,8 @@ unset(
     $_SESSION['admin/general-info/edit/values']
 );
 
-$_SESSION['admin/general-info/messages'] = ['Changed have been saved.'];
+if ($changed) $message = 'Changed have been saved.';
+else $message = 'No changes to be saved.';
+$_SESSION['admin/general-info/messages'] = [$message];
 
 redirect('..');
