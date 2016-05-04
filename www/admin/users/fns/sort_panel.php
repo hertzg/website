@@ -33,7 +33,7 @@ function sort_panel ($order_by, $total, $base = '') {
     include_once "$fnsDir/Page/twoColumns.php";
     $content =
         Page\twoColumns($usernameLink, $storageUsedLink)
-        .'<div class="ht"></div>'
+        .'<div class="hr"></div>'
         .Page\twoColumns($insertTimeLink, $accessTimeLink);
 
     include_once "$fnsDir/Page/panel.php";
