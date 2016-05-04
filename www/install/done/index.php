@@ -17,10 +17,10 @@ echo_html(
         .'The installation has finished.<br />Zvini is ready to be used.'
     .'</h2>'
     .'<div style="text-align: center; margin-top: 32px">'
-        .'You can administrate the instance at:<br />'
-        ."<a class=\"link\" href=\"$absolute_base\">$absolute_base</a>"
+        .'<a class="button" href="../.." style="width: 120px">Go to Zvini</a>'
     .'</div>'
     .'<div style="text-align: center; margin-top: 32px">'
-        .'<a class="button" href="../.." style="width: 120px">Go to Zvini</a>'
+        .'You can administrate this instance at:<br />'
+        ."<a class=\"link\" href=\"$absolute_base\">$absolute_base</a>"
     .'</div>'
 );

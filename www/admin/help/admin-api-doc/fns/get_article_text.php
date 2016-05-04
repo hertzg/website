@@ -7,7 +7,7 @@ function get_article_text () {
 
     return
         '<em class="term">Zvini Admin API</em> allows programs to manage'
-        .' an instance of Zvini by calling API methods with HTTP.'
+        .' this Zvini instance by calling API methods with HTTP.'
         .' The API methods can be called with either GET or POST methods.'
         .' The method parameters can be passed either as a'
         .' query string or as a URL-encoded form data.'

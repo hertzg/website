@@ -92,7 +92,7 @@ echo_page(
                 .'<div class="notes">'
                     .'<div class="notes-note">'
                         .'&bull; The number of reverse proxy servers that'
-                        .' the Zvini instance is behind and your IP '
+                        .' this Zvini instance is behind and your IP '
                         .' address detected by that configuration.'
                     .'</div>'
                 .'</div>'

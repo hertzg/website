@@ -62,7 +62,7 @@ $content =
         .Form\label('Reverse proxies / your IP',
             NumReverseProxies\get()." / $yourIp")
         .Form\notes([
-            'The number of reverse proxy servers that the Zvini instance'
+            'The number of reverse proxy servers that this Zvini instance'
             .' is behind and your IP address detected by that configuration.',
         ])
         .'<div class="hr"></div>'

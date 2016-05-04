@@ -79,7 +79,7 @@ $content = Page\create(
             NumReverseProxies\available(), $values['numReverseProxies'],
             $focus === 'numReverseProxies')
         .Form\notes([
-            'The number of reverse proxy servers that the Zvini instance'
+            'The number of reverse proxy servers that this Zvini instance'
             .' is behind and your IP address detected by that configuration.',
         ])
         .'<div class="hr"></div>'

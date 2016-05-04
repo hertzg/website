@@ -44,7 +44,7 @@ echo_page(
             .'<h2>Administrator</h2>'
             .'<div style="margin-bottom: 12px">'
                 .'This is an emergency user that will let you administer'
-                .' the Zvini instance even when it\'s experiencing a'
+                .' this Zvini instance even when it\'s experiencing a'
                 .' misconfiguration or its MySQL server is down.'
             .'</div>'
             .'<div style="margin-bottom: 8px">'

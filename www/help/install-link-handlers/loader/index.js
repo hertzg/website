@@ -15,8 +15,8 @@
                 href: '../#install-link-handlers',
             }, 'Install Link Handlers', function (div) {
                 ui.Page_text(div, function (div) {
-                    ui.Text(div, 'Link handlers register this instance of' +
-                        ' Zvini in your web browser as an alternative way' +
+                    ui.Text(div, 'Link handlers register this Zvini instance' +
+                        ' in your web browser as an alternative way' +
                         ' of opening certain types of links that you' +
                         ' encounter on the web. Note that this feature' +
                         ' is not available in some browsers.')
