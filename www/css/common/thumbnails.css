@@ -4,13 +4,13 @@
     width: 250px;
 }
 
-@media (max-width: 330px) {
+@media (max-width: 370px) {
     .thumbnails-item {
         width: 50%;
     }
 }
 
-@media (min-width: 331px) and (max-width: 450px) {
+@media (min-width: 371px) and (max-width: 510px) {
     .thumbnails-item {
         width: 33%;
     }
@@ -22,7 +22,7 @@
     }
 }
 
-@media (min-width: 451px) and (max-width: 600px) {
+@media (min-width: 511px) and (max-width: 650px) {
     .thumbnails-item {
         width: 25%;
     }
@@ -31,7 +31,7 @@
     }
 }
 
-@media (min-width: 601px) and (max-width: 750px) {
+@media (min-width: 651px) and (max-width: 800px) {
     .thumbnails-item {
         width: 20%;
     }
@@ -40,7 +40,7 @@
     }
 }
 
-@media (min-width: 751px) {
+@media (min-width: 801px) {
     .thumbnails-item {
         width: 17%;
     }

@@ -1,5 +1,6 @@
 .thumbnail_link {
     height: 123px;
+    font-weight: normal;
 }
 
 .thumbnail_link-icon {
@@ -31,7 +32,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 12px;
-    font-weight: normal;
     line-height: 14px;
 }
 
