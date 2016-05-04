@@ -4,5 +4,5 @@ function SearchForm_create (parentNode, action, callback) {
         form.className = 'search_form'
         callback(form)
     })
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
 }

@@ -1,5 +1,5 @@
 function Page_create (parentNode, backlink, title, callback) {
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
     Element(parentNode, 'div', function (div) {
         div.className = 'tab'
         Element(div, 'div', function (div) {
@@ -19,7 +19,7 @@ function Page_create (parentNode, backlink, title, callback) {
             })
         })
     })
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
     Element(parentNode, 'div', function (div) {
         div.className = 'tab-content'
         callback(div)

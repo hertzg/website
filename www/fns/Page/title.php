@@ -4,7 +4,7 @@ namespace Page;
 
 function title ($title, $content) {
     return
-        '<br class="zeroHeight" />'
+        '<div class="zeroHeight"><br class="zeroHeight" /></div>'
         .'<div class="tab">'
             .'<div class="tab-bar">'
                 .'<span class="tab-active">'
@@ -12,6 +12,6 @@ function title ($title, $content) {
                 .'</span>'
             .'</div>'
         .'</div>'
-        .'<br class="zeroHeight" />'
+        .'<div class="zeroHeight"><br class="zeroHeight" /></div>'
         ."<div class=\"tab-content\">$content</div>";
 }

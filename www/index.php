@@ -91,7 +91,7 @@ echo
                     .'</div>'
                 .'</div>'
             .'</div>'
-            .'<br class="zeroHeight" />'
+            .'<div class="zeroHeight"><br class="zeroHeight" /></div>'
             ."<div class=\"buttonsWrapper\">$buttons</div>"
             .vars_script('', $theme_color, 'light')
             .compressed_js_script('unloadProgress')

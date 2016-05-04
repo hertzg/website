@@ -2,7 +2,7 @@
 
 function loader_revisions () {
     return [
-        '' => 4,
+        '' => 5,
         'account/close/' => 2,
         'admin/help/' => 5,
         'email-reset-password/' => 2,
@@ -10,7 +10,7 @@ function loader_revisions () {
         'help/about-zvini/' => 4,
         'help/feedback/' => 6,
         'help/install-link-handlers/' => 4,
-        'home/' => 10,
+        'home/' => 11,
         'home/customize/' => 6,
         'home/customize/reorder/' => 11,
         'home/customize/reorder/move/' => 1,

@@ -4,7 +4,7 @@ namespace Page;
 
 function panel ($title, $content, $newItemButton = '') {
     return
-        '<br class="zeroHeight" />'
+        '<div class="zeroHeight"><br class="zeroHeight" /></div>'
         .'<div class="panel">'
             .'<div class="panel-title">'
                 .'<div class="panel-title-text">'

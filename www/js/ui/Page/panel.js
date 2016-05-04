@@ -1,5 +1,5 @@
 function Page_panel (parentNode, title, callback) {
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
     Element(parentNode, 'div', function (div) {
         div.className = 'panel'
         Element(div, 'div', function (div) {

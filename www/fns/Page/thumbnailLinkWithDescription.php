@@ -7,7 +7,7 @@ function thumbnailLinkWithDescription ($title,
 
     $content =
         "<span class=\"thumbnail_link-title\">$title</span>"
-        .'<br class="zeroHeight" />'
+        .'<span class="zeroHeight"><br class="zeroHeight" /></span>'
         .'<span class="thumbnail_link-description colorText grey">'
             .$description
         .'</span>';

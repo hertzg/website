@@ -216,7 +216,7 @@ function RenderCalendar (div, response) {
                 ui.Text(span, 'Calendar')
             })
             if (today || tomorrow) {
-                ui.ZeroHeightBr(span)
+                ui.ZeroHeightBr(span, 'span')
                 ui.Element(span, 'span', function (span) {
 
                     span.className = 'thumbnail_link-description colorText grey'

@@ -6,7 +6,7 @@ function title_and_description ($title, $description) {
             .'<span class="title_and_description-title">'
                 .$title
             .'</span>'
-            .'<br class="zeroHeight" />'
+            .'<span class="zeroHeight"><br class="zeroHeight" /></span>'
             .'<span class="title_and_description-description colorText grey">'
                 .$description
             .'</span>'

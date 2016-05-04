@@ -7,7 +7,7 @@ function title_and_description (parentNode,
             span.className = 'title_and_description-title'
             titleCallback(span)
         })
-        ZeroHeightBr(span)
+        ZeroHeightBr(span, 'span')
         Element(span, 'span', function (span) {
             span.className = 'title_and_description-description colorText grey'
             descriptionCallback(span)

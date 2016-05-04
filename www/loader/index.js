@@ -42,7 +42,7 @@
                 })
             })
         })
-        ui.ZeroHeightBr(body)
+        ui.ZeroHeightBr(body, 'div')
         ui.Element(body, 'div', function (div) {
 
             var signInLink = document.createElement('a')

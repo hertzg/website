@@ -331,7 +331,7 @@ function title_and_description (parentNode,
             span.className = 'title_and_description-title'
             titleCallback(span)
         })
-        ZeroHeightBr(span)
+        ZeroHeightBr(span, 'span')
         Element(span, 'span', function (span) {
             span.className = 'title_and_description-description colorText grey'
             descriptionCallback(span)
@@ -348,9 +348,12 @@ function UserPage (page) {
     }
 }
 ;
-function ZeroHeightBr (parentNode) {
-    Element(parentNode, 'br', function (br) {
-        br.className = 'zeroHeight'
+function ZeroHeightBr (parentNode, wrapperTagName) {
+    Element(parentNode, wrapperTagName, function (wrapper) {
+        wrapper.className = 'zeroHeight'
+        Element(wrapper, 'br', function (br) {
+            br.className = 'zeroHeight'
+        })
     })
 }
 ;
@@ -658,7 +661,7 @@ function Page_calendarTodayLink (parentNode, response, href) {
 }
 ;
 function Page_create (parentNode, backlink, title, callback) {
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
     Element(parentNode, 'div', function (div) {
         div.className = 'tab'
         Element(div, 'div', function (div) {
@@ -678,7 +681,7 @@ function Page_create (parentNode, backlink, title, callback) {
             })
         })
     })
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
     Element(parentNode, 'div', function (div) {
         div.className = 'tab-content'
         callback(div)
@@ -686,7 +689,7 @@ function Page_create (parentNode, backlink, title, callback) {
 }
 ;
 function Page_emptyTabs (parentNode, callback) {
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
     Element(parentNode, 'div', function (div) {
         div.className = 'tab-content'
         callback(div)
@@ -776,7 +779,7 @@ function Page_messages (parentNode, texts) {
 }
 ;
 function Page_panel (parentNode, title, callback) {
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
     Element(parentNode, 'div', function (div) {
         div.className = 'panel'
         Element(div, 'div', function (div) {
@@ -877,7 +880,7 @@ function Page_thumbnailLinkWithDescription (parentNode,
             span.className = 'thumbnail_link-title'
             Text(span, title)
         })
-        ZeroHeightBr(div)
+        ZeroHeightBr(div, 'span')
         Element(div, 'span', function (span) {
             span.className = 'thumbnail_link-description colorText grey'
             descriptionCallback(span)
@@ -938,7 +941,7 @@ function Page_thumbnails (parentNode, callbacks) {
 }
 ;
 function Page_title (parentNode, title, callback) {
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
     Element(parentNode, 'div', function (div) {
         div.className = 'tab'
         Element(div, 'div', function (div) {
@@ -953,7 +956,7 @@ function Page_title (parentNode, title, callback) {
             })
         })
     })
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
     Element(parentNode, 'div', function (div) {
         div.className = 'tab-content'
         callback(div)
@@ -984,7 +987,7 @@ function SearchForm_create (parentNode, action, callback) {
         form.className = 'search_form'
         callback(form)
     })
-    ZeroHeightBr(parentNode)
+    ZeroHeightBr(parentNode, 'div')
 }
 ;
 function SearchForm_emptyContent (parentNode, placeholder) {

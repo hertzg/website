@@ -21,12 +21,12 @@ function create ($backlink, $activeTabTitle, $content, $newItemButton = '') {
         .'</span>';
 
     return
-        '<br class="zeroHeight" />'
+        '<div class="zeroHeight"><br class="zeroHeight" /></div>'
         .'<div class="tab">'
             ."<div class=\"tab-bar\">$itemsHtml</div>"
             .$newItemButton
         .'</div>'
-        .'<br class="zeroHeight" />'
+        .'<div class="zeroHeight"><br class="zeroHeight" /></div>'
         ."<div class=\"tab-content\">$content</div>";
 
 }
