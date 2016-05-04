@@ -188,7 +188,9 @@ function UnloadPage (unloadProgress, absoluteBase, revisions) {
     function loadHref (href, search, hash, callback) {
 
         function error () {
-            location.assign(href + search + hash)
+            var newHref = href + search + hash
+            if (location.href === newHref) location.reload()
+            else location.assign(newHref)
         }
 
         function loadData (loader) {
