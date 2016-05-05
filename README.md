@@ -5,7 +5,7 @@ Zvini is a website script where users can store and exchange
 personal information such as files, notes, contacts and more.
 An instance of the script runs on https://zvini.com/.
 The website comes with an installer which should work in most environments.
-The website can also be configured from the administration page at '/admin/'.
+It can also be configured from the administration page at `/admin/`.
 The default administrator username and password is `admin` and `admin`.
 For manual installation see the sections below:
 
