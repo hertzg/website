@@ -13,7 +13,7 @@ include_once 'fns/require_password_params.php';
 require_password_params($user->username, $password);
 
 include_once '../../../fns/Users/resetPassword.php';
-Users\resetPassword($mysqli, $user->id_users, $password);
+Users\resetPassword($mysqli, $user->id_users, $password, true);
 
 header('Content-Type: application/json');
 echo 'true';

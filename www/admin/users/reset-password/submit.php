@@ -9,7 +9,7 @@ require_same_domain_referer('..');
 
 include_once '../fns/require_user.php';
 include_once '../../../lib/mysqli.php';
-list($user, $id) = require_user($mysqli);
+list($user, $id, $admin_user) = require_user($mysqli);
 
 include_once "$fnsDir/request_strings.php";
 list($password, $repeatPassword) = request_strings(
@@ -39,8 +39,10 @@ unset(
     $_SESSION['admin/users/reset-password/values']
 );
 
+$should_change_password = !$admin_user || $admin_user->id_users != $id;
+
 include_once "$fnsDir/Users/resetPassword.php";
-Users\resetPassword($mysqli, $id, $password);
+Users\resetPassword($mysqli, $id, $password, $should_change_password);
 
 $_SESSION['admin/users/view/messages'] = ['Password has been reset.'];
 

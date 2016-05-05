@@ -163,6 +163,7 @@ function ensure ($mysqli) {
         ],
         'schedules_check_day' => $unsigned_bigint,
         'schedules_order_by' => $order_by_column,
+        'should_change_password' => $unsigned_tinyint,
         'show_admin' => $unsigned_tinyint,
         'show_bar_charts' => $unsigned_tinyint,
         'show_bookmarks' => $unsigned_tinyint,

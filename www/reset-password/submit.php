@@ -40,7 +40,7 @@ unset(
 );
 
 include_once '../fns/Users/resetPassword.php';
-Users\resetPassword($mysqli, $id_users, $password);
+Users\resetPassword($mysqli, $id_users, $password, false);
 
 include_once '../fns/Cookie/set.php';
 Cookie\set('username', $user->username);
