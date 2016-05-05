@@ -63,8 +63,8 @@ $content =
             .' that calls a cross-site API method.'
         )
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('PHP Example',
-            'php-example', 'generic', ['id' => 'php-example'])
+        .Page\imageArrowLink('PHP Example', 'php-example',
+            'unknown-file', ['id' => 'php-example'])
         .'<div class="hr"></div>'
         .Page\text(
             'Below is a list of errors'

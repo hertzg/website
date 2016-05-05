@@ -47,8 +47,8 @@ $content =
         'API Documentation',
         Page\text(get_article_text())
         .'<div class="hr"></div>'
-        .Page\imageArrowLink('PHP Example',
-            'php-example', 'generic', ['id' => 'php-example'])
+        .Page\imageArrowLink('PHP Example', 'php-example',
+            'unknown-file', ['id' => 'php-example'])
         .'<div class="hr"></div>'
         .Page\text(
             'When accessing an API method with an API key'
