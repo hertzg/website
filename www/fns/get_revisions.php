@@ -83,7 +83,7 @@ function get_revisions () {
         'theme/color/pink/images/icon256.png' => 4,
         'theme/color/pink/images/icon512.png' => 4,
         'theme/color/pink/images/zvini.svg' => 6,
-        'theme/color/violet/common.css' => 12,
+        'theme/color/violet/common.css' => 13,
         'theme/color/violet/images/icon16.png' => 3,
         'theme/color/violet/images/icon32.png' => 4,
         'theme/color/violet/images/icon48.png' => 5,
