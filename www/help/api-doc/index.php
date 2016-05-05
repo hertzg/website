@@ -51,15 +51,27 @@ $content =
             'php-example', 'generic', ['id' => 'php-example'])
         .'<div class="hr"></div>'
         .Page\text(
-            'Below is a list of errors that are expected from any API method:'
+            'When accessing an API method with an API key'
+            .' the following errors are expected:'
             .'<br /><code>INVALID_API_KEY</code> - The API key is invalid.'
             .'<br /><code>API_KEY_EXPIRED</code> - The API key is expired.'
             .'<br /><code>ACCESS_DENIED</code> - '
             .'The API key doesn\'t have a permission to perform the action.'
-            .'<br /><code>NOT_SIGNED_IN</code>'
-            .' - The user has already signed out.'
+            .'<br /><code>USER_DISABLED</code> - '
+            .'The user account is disabled.'
+        )
+        .'<div class="hr"></div>'
+        .Page\text(
+            'When accessing an API method with an authenticated session'
+            .' the following errors are expected:'
             .'<br /><code>CROSS_DOMAIN_REQUEST</code>'
             .' - The request was referred by a different domain.'
+            .'<br /><code>NOT_SIGNED_IN</code>'
+            .' - The user has already signed out.'
+            .'<br /><code>USER_DISABLED</code> - '
+            .'The user account is disabled.'
+            .'<br /><code>USER_PASSWORD_RESET</code> - The user password'
+            .' has been reset by an administrator and it needs to be changed.'
         )
     )
     .\Page\panel('Methods', join('<div class="hr"></div>', $items))
