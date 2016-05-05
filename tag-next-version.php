@@ -5,6 +5,10 @@ chdir(__DIR__);
 include_once 'lib/cli.php';
 include_once 'lib/defaults.php';
 
+exec('git tag --contains | grep ^v', $lines);
+if ($lines) die("ERROR: A version is already tagged.\n");
+unset($lines);
+
 exec('git tag | grep ^v | sort --version-sort | tail -1', $lines);
 preg_match('/^v(\d+)$/', $lines[0], $match);
 $next = 'v'.($match[1] + 1);
