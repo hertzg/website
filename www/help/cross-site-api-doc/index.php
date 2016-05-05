@@ -65,6 +65,13 @@ $content =
         .'<div class="hr"></div>'
         .Page\imageArrowLink('PHP Example',
             'php-example', 'generic', ['id' => 'php-example'])
+        .'<div class="hr"></div>'
+        .Page\text(
+            'Below is a list of errors'
+            .' that are expected from any cross-site API method:'
+            .'<br /><code>INVALID_CROSS_SITE_API_KEY</code> - '
+            .'The cross-site API key is invalid.'
+        )
     )
     .Page\panel('Methods', join('<div class="hr"></div>', $items));
 
