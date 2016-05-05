@@ -8,6 +8,7 @@ function visual_assert ($keyword, $expected_includes, $expected_excludes) {
 }
 
 chdir(__DIR__);
+include_once '../../lib/defaults.php';
 include_once '../fns/parse_keyword.php';
 visual_assert('', [], []);
 visual_assert(' ', [], []);

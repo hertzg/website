@@ -2,6 +2,7 @@
 <?php
 
 chdir(__DIR__);
+include_once '../../lib/defaults.php';
 include_once '../fns/n_times.php';
 assert(n_times(-1) === '-1 times');
 assert(n_times(0) === 'never');
