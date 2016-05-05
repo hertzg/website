@@ -23,6 +23,12 @@ function require_user ($base = '') {
         redirect("{$base}account-disabled/");
     }
 
+    if ($user->should_change_password) {
+        $return = rawurlencode($_SERVER['REQUEST_URI']);
+        include_once __DIR__.'/redirect.php';
+        redirect("{$base}sign-in/set-new-password/?return=$return");
+    }
+
     return $user;
 
 }

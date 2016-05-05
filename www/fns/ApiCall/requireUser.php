@@ -25,6 +25,11 @@ function requireUser () {
         Error\forbidden('"USER_DISABLED"');
     }
 
+    if ($user->should_change_password) {
+        include_once __DIR__.'/Error/forbidden.php';
+        Error\forbidden('"USER_PASSWORD_RESET"');
+    }
+
     return $user;
 
 }

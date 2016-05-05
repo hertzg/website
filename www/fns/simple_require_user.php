@@ -22,6 +22,11 @@ function simple_require_user ($base = '') {
         redirect("{$base}account-disabled/");
     }
 
+    if ($user->should_change_password) {
+        include_once __DIR__.'/redirect.php';
+        redirect("{$base}sign-in/set-new-password/");
+    }
+
     return $user;
 
 }

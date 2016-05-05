@@ -7,6 +7,12 @@ function redirect_back ($user, $return) {
     include_once "$fnsDir/format_return.php";
     $return = format_return($return);
 
+    if ($user->should_change_password) {
+        $newReturn = 'set-new-password/';
+        if ($return !== null) $newReturn .= '?return='.rawurlencode($return);
+        $return = $newReturn;
+    }
+
     if ($return === null) {
         $num_signins = $user->num_signins;
         if ($num_signins) {

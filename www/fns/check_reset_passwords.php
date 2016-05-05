@@ -1,7 +1,7 @@
 <?php
 
-function check_reset_passwords ($username,
-    $password, $repeatPassword, &$errors, &$focus) {
+function check_reset_passwords ($username, $password,
+    $repeatPassword, &$errors, &$focus, $check_password = null) {
 
     if ($password === '') {
         $errors[] = 'Enter new password.';
@@ -27,6 +27,11 @@ function check_reset_passwords ($username,
             .' that is different from the username.';
         $focus = 'password';
         return;
+    }
+
+    if ($check_password !== null) {
+        $check_password($errors, $focus);
+        if ($errors) return;
     }
 
     if ($password !== $repeatPassword) {
