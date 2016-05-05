@@ -25,7 +25,13 @@ function render_schedules ($user, $schedules, &$items, $params, $base = '') {
         }
     } else {
         include_once "$fnsDir/Page/info.php";
-        $items[] = Page\info('No schedules');
+        include_once "$fnsDir/Page/text.php";
+        $items[] =
+            Page\text('Schedules are for keeping track of the events that'
+                .' happen in every fixed number of days. Examples'
+                .' of a schedule include doing exercises, reading news,'
+                .' inspecting your health, changing a toothbrush, etc.')
+            .Page\info('You have no schedules');
     }
 
 }
