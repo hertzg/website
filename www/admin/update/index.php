@@ -53,4 +53,4 @@ $content = Page\create(
 );
 
 include_once '../fns/echo_admin_page.php';
-echo_admin_page($admin_user, 'Users', $content, '../');
+echo_admin_page($admin_user, 'System Update', $content, '../');
