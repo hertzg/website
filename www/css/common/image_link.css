@@ -32,6 +32,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.image_link-content.withImage {
+    left: 52px;
+}
 .image_link.withArrow .image_link-content {
     right: 24px;
 }

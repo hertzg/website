@@ -27,12 +27,14 @@ function imageLink ($content, $href, $iconName, $options = []) {
     }
 
     if (array_key_exists('image', $options)) {
+        $contentAdditionalClass = ' withImage';
         $imageElement =
             '<span class="image_link-image"'
             ." style=\"background-image: url($options[image])\">"
             .'</span>';
     } else {
         $imageElement = '';
+        $contentAdditionalClass = '';
     }
 
     return
@@ -43,7 +45,9 @@ function imageLink ($content, $href, $iconName, $options = []) {
                 ."<span class=\"icon $iconName\"></span>"
                 .$imageElement
             .'</span>'
-            ."<span class=\"image_link-content\">$content</span>"
+            ."<span class=\"image_link-content$contentAdditionalClass\">"
+                .$content
+            .'</span>'
         .'</a>';
 
 }
