@@ -3,6 +3,7 @@
 function create_view_page ($invitation, &$scripts) {
 
     $id = $invitation->id;
+    $key = $invitation->key;
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
@@ -12,8 +13,6 @@ function create_view_page ($invitation, &$scripts) {
         $_SESSION['admin/invitations/errors'],
         $_SESSION['admin/invitations/messages']
     );
-
-    $key = $invitation->key;
 
     include_once "$fnsDir/get_absolute_base.php";
     $signUpLink = get_absolute_base()."accept-invitation/?key=$key";
