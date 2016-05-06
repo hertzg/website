@@ -21,6 +21,7 @@ function ensure ($mysqli) {
         'collation' => 'ascii_general_ci',
     ];
 
+    include_once "$fnsDir/ApiKey/column.php";
     include_once "$fnsDir/ApiKeyName/column.php";
     include_once "$fnsDir/Email/column.php";
     include_once "$fnsDir/EncryptionKey/column.php";
@@ -199,7 +200,7 @@ function ensure ($mysqli) {
         'theme_color' => \Theme\Color\column(),
         'timezone' => ['type' => 'int(11)'],
         'username' => \Username\column(),
-        'verify_email_key' => \LinkKey\column(true),
+        'verify_email_key' => \ApiKey\column(true),
         'verify_email_key_time' => $nullable_unsigned_bigint,
         'wallets_order_by' => $order_by_column,
     ]);

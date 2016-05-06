@@ -10,8 +10,6 @@ require_same_domain_referer('./');
 include_once '../fns/require_user_with_password.php';
 $user = require_user_with_password('../');
 
-$id_users = $user->id_users;
-
 include_once "$fnsDir/redirect.php";
 if ($user->email_verified) redirect('..');
 
@@ -31,20 +29,15 @@ unset($_SESSION['account/verify-email/errors']);
 include_once "$fnsDir/Captcha/reset.php";
 Captcha\reset();
 
-include_once "$fnsDir/LinkKey/random.php";
-$key = LinkKey\random();
+include_once "$fnsDir/ApiKey/random.php";
+$key = ApiKey\random();
 
 include_once "$fnsDir/Users/editVerifyEmailKey.php";
 include_once '../../lib/mysqli.php';
-Users\editVerifyEmailKey($mysqli, $id_users, $key);
+Users\editVerifyEmailKey($mysqli, $user->id_users, $key);
 
 include_once "$fnsDir/get_absolute_base.php";
-$href = htmlspecialchars(
-    get_absolute_base().'verify-email/?'.http_build_query([
-        'id_users' => $id_users,
-        'key' => bin2hex($key),
-    ])
-);
+$href = htmlspecialchars(get_absolute_base()."verify-email/?key=$key");
 
 $title = 'Verify Zvini Account Email Address';
 
