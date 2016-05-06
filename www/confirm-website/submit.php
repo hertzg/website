@@ -19,7 +19,9 @@ CrossSiteApiKeys\add($mysqli, $user->id_users, $key);
 
 if (array_key_exists('query', $parsed_url)) $url .= '&';
 else $url .= '?';
-$url .= "cross_site_api_key=$key";
+
+include_once "$fnsDir/get_absolute_base.php";
+$url .= "cross_site_api_key=$key&location=".rawurlencode(get_absolute_base());
 
 include_once "$fnsDir/redirect.php";
 redirect($url);
