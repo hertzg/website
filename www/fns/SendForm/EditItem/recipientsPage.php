@@ -2,8 +2,8 @@
 
 namespace SendForm\EditItem;
 
-function recipientsPage ($mysqli, $user, $id, $pageTitle,
-    $text, $errorsKey, $messagesKey, $valuesKey) {
+function recipientsPage ($mysqli, $user, $id, $pageTitle, $text,
+    $errorsKey, $messagesKey, $valuesKey, $base, $contactsBase) {
 
     $base = '../../../';
     $fnsDir = __DIR__.'/../..';
@@ -39,13 +39,14 @@ function recipientsPage ($mysqli, $user, $id, $pageTitle,
     } else {
         if ($recipients) {
             include_once __DIR__.'/../recipientsPanels.php';
-            \SendForm\recipientsPanels($recipients, $contacts,
-                $itemParams, $content, $additionalPanels);
+            \SendForm\recipientsPanels($recipients, $contacts, $itemParams,
+                $content, $additionalPanels, $base, $contactsBase);
         } else {
             if ($contacts) {
 
                 include_once "$fnsDir/RecipientList/contactsForm.php";
-                $content = \RecipientList\contactsForm($contacts, $itemParams);
+                $content = \RecipientList\contactsForm(
+                    $contacts, $itemParams, $base, $contactsBase);
 
                 include_once "$fnsDir/RecipientList/enterPanel.php";
                 $additionalPanels = \RecipientList\enterPanel('', $itemParams);

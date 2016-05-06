@@ -7,6 +7,7 @@ include_once '../../../lib/mysqli.php';
 list($user, $stageValues, $id, $folder) = require_stage($mysqli);
 
 $base = '../../../';
+$contactsBase = "{$base}contacts/";
 $fnsDir = '../../../fns';
 
 $key = 'files/rename-folder/send/values';
@@ -40,12 +41,13 @@ if ($values['usernameError']) {
     if ($recipients) {
         include_once "$fnsDir/SendForm/recipientsPanels.php";
         SendForm\recipientsPanels($recipients, $contacts,
-            $params, $content, $additionalPanels);
+            $params, $content, $additionalPanels, $base, $contactsBase);
     } else {
         if ($contacts) {
 
             include_once "$fnsDir/RecipientList/contactsForm.php";
-            $content = RecipientList\contactsForm($contacts, $params);
+            $content = RecipientList\contactsForm(
+                $contacts, $params, $base, $contactsBase);
 
             include_once "$fnsDir/RecipientList/enterPanel.php";
             $additionalPanels = RecipientList\enterPanel('', $params);

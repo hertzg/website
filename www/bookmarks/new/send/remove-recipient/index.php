@@ -10,7 +10,9 @@ unset(
     $_SESSION['bookmarks/new/send/messages']
 );
 
+$base = '../../../../';
+
 include_once '../../../../fns/SendForm/NewItem/removeRecipientPage.php';
 include_once '../../../../lib/mysqli.php';
-SendForm\NewItem\removeRecipientPage($mysqli,
-    $user, $username, 'Bookmark', 'bookmark', $recipients);
+SendForm\NewItem\removeRecipientPage($mysqli, $user, $username,
+    'Bookmark', 'bookmark', $recipients, $base, "{$base}contacts/");

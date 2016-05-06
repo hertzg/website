@@ -8,7 +8,10 @@ list($bookmark, $id, $user) = require_bookmark($mysqli);
 
 unset($_SESSION['bookmarks/view/messages']);
 
+$base = '../../';
+
 include_once '../../fns/SendForm/recipientsPage.php';
 SendForm\recipientsPage($mysqli, $user, $id, "Bookmark #$id",
     "Send Bookmark #$id", 'bookmark', 'bookmarks/send/errors',
-    'bookmarks/send/messages', 'bookmarks/send/values');
+    'bookmarks/send/messages', 'bookmarks/send/values',
+    $base, "{$base}contacts/");

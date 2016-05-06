@@ -8,7 +8,10 @@ list($place, $id, $user) = require_place($mysqli);
 
 unset($_SESSION['places/view/messages']);
 
+$base = '../../';
+
 include_once '../../fns/SendForm/recipientsPage.php';
 SendForm\recipientsPage($mysqli, $user, $id, "Place #$id",
     "Send Place #$id", 'place', 'places/send/errors',
-    'places/send/messages', 'places/send/values');
+    'places/send/messages', 'places/send/values',
+    $base, "{$base}contacts/");

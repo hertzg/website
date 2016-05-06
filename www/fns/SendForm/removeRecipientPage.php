@@ -2,8 +2,8 @@
 
 namespace SendForm;
 
-function removeRecipientPage ($mysqli, $user,
-    $id, $username, $title, $text, $recipients) {
+function removeRecipientPage ($mysqli, $user, $id,
+    $username, $title, $text, $recipients, $base, $contactsBase) {
 
     $base = '../../../';
     $fnsDir = __DIR__.'/..';
@@ -20,8 +20,8 @@ function removeRecipientPage ($mysqli, $user,
     $contacts = \Contacts\indexWithUsernameOnUser($mysqli, $user->id_users);
 
     include_once __DIR__.'/recipientsPanels.php';
-    recipientsPanels($recipients, $contacts,
-        $itemParams, $content, $additionalPanels, '../');
+    recipientsPanels($recipients, $contacts, $itemParams,
+        $content, $additionalPanels, $base, $contactsBase, '../');
 
     include_once "$fnsDir/Page/confirmDialog.php";
     include_once "$fnsDir/Page/create.php";

@@ -11,6 +11,8 @@ unset(
     $_SESSION['tasks/send/messages']
 );
 
+$base = '../../../';
+
 include_once '../../../fns/SendForm/removeRecipientPage.php';
-SendForm\removeRecipientPage($mysqli, $user, $id,
-    $username, "Task #$id", 'task', $recipients);
+SendForm\removeRecipientPage($mysqli, $user, $id, $username,
+    "Task #$id", 'task', $recipients, $base, "{$base}contacts/");

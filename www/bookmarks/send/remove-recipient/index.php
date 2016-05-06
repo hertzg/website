@@ -12,6 +12,8 @@ unset(
     $_SESSION['bookmarks/send/messages']
 );
 
+$base = '../../../';
+
 include_once '../../../fns/SendForm/removeRecipientPage.php';
-SendForm\removeRecipientPage($mysqli, $user, $id,
-    $username, "Bookmark #$id", 'bookmark', $recipients);
+SendForm\removeRecipientPage($mysqli, $user, $id, $username,
+    "Bookmark #$id", 'bookmark', $recipients, $base, "{$base}contacts/");

@@ -12,5 +12,5 @@ unset(
 );
 
 include_once '../../../../fns/SendForm/EditItem/removeRecipientPage.php';
-SendForm\EditItem\removeRecipientPage($mysqli,
-    $user, $id, $username, 'contact', $recipients);
+SendForm\EditItem\removeRecipientPage($mysqli, $user, $id,
+    $username, 'contact', $recipients, '../../../../', '../../../');

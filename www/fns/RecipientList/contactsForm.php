@@ -2,7 +2,9 @@
 
 namespace RecipientList;
 
-function contactsForm ($contacts, $params, $base = '') {
+function contactsForm ($contacts, $params,
+    $base, $contactsBase, $localBase = '') {
+
     $html = '';
     include_once __DIR__.'/../Page/imageLinkWithDescription.php';
     foreach ($contacts as $i => $contact) {
@@ -14,14 +16,20 @@ function contactsForm ($contacts, $params, $base = '') {
         $description = htmlspecialchars($contact->full_name);
         $params['username'] = $contactUsername;
         $query = '?'.htmlspecialchars(http_build_query($params));
-        $href = "{$base}submit-add.php$query";
+        $href = "{$localBase}submit-add.php$query";
 
-        if ($contact->favorite) $icon = 'favorite-contact';
-        else $icon = 'contact';
+        $photo_id = $contact->photo_id;
+        if ($photo_id === null) {
+            $image = "{$base}images/empty-photo.svg";
+        } else {
+            $image = "{$contactsBase}photo/download/"
+                ."?id=$contact->id&amp;photo_id=$photo_id";
+        }
 
         $html .= \Page\imageLinkWithDescription($title,
-            $description, $href, $icon);
+            $description, $href, 'none', ['image' => $image]);
 
     }
     return $html;
+
 }

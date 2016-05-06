@@ -11,4 +11,4 @@ unset($_SESSION['contacts/view/messages']);
 include_once '../../fns/SendForm/recipientsPage.php';
 SendForm\recipientsPage($mysqli, $user, $id, "Contact #$id",
     "Send Contact #$id", 'contact', 'contacts/send/errors',
-    'contacts/send/messages', 'contacts/send/values');
+    'contacts/send/messages', 'contacts/send/values', '../../', '../');

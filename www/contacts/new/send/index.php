@@ -9,4 +9,5 @@ include_once '../../../fns/SendForm/NewItem/recipientsPage.php';
 include_once '../../../lib/mysqli.php';
 SendForm\NewItem\recipientsPage($mysqli, $user,
     'Contact', 'contact', 'contacts/new/send/errors',
-    'contacts/new/send/messages', 'contacts/new/send/values');
+    'contacts/new/send/messages', 'contacts/new/send/values',
+    '../../../', '../../');

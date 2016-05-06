@@ -11,7 +11,10 @@ unset(
     $_SESSION['calculations/view/messages']
 );
 
+$base = '../../';
+
 include_once '../../fns/SendForm/recipientsPage.php';
 SendForm\recipientsPage($mysqli, $user, $id, "Calculation #$id",
     "Send Calculation #$id", 'calculation', 'calculations/send/errors',
-    'calculations/send/messages', 'calculations/send/values');
+    'calculations/send/messages', 'calculations/send/values',
+    $base, "{$base}contacts/");

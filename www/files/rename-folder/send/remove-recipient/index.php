@@ -25,8 +25,8 @@ $yesHref = 'submit.php?'.htmlspecialchars(http_build_query([
 ]));
 
 include_once "$fnsDir/SendForm/recipientsPanels.php";
-SendForm\recipientsPanels($recipients, $contacts,
-    $params, $content, $additionalPanels, '../');
+SendForm\recipientsPanels($recipients, $contacts, $params,
+    $content, $additionalPanels, $base, "{$base}contacts", '../');
 
 include_once "$fnsDir/Page/create.php";
 include_once "$fnsDir/Page/confirmDialog.php";

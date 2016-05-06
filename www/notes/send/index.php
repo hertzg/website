@@ -8,7 +8,10 @@ list($note, $id, $user) = require_unlocked_note($mysqli);
 
 unset($_SESSION['notes/view/messages']);
 
+$base = '../../';
+
 include_once '../../fns/SendForm/recipientsPage.php';
 SendForm\recipientsPage($mysqli, $user, $id, "Note #$id",
     "Send Note #$id", 'note', 'notes/send/errors',
-    'notes/send/messages', 'notes/send/values');
+    'notes/send/messages', 'notes/send/values',
+    $base, "{$base}contacts/");

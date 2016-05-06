@@ -10,7 +10,9 @@ unset(
     $_SESSION['places/new/send/messages']
 );
 
+$base = '../../../../';
+
 include_once '../../../../fns/SendForm/NewItem/removeRecipientPage.php';
 include_once '../../../../lib/mysqli.php';
-SendForm\NewItem\removeRecipientPage($mysqli,
-    $user, $username, 'Place', 'place', $recipients);
+SendForm\NewItem\removeRecipientPage($mysqli, $user, $username,
+    'Place', 'place', $recipients, $base, "{$base}contacts/");

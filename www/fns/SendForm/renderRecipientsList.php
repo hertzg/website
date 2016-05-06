@@ -2,7 +2,7 @@
 
 namespace SendForm;
 
-function renderRecipientsList ($recipients, $params, $base= '') {
+function renderRecipientsList ($recipients, $params, $base = '') {
     $html = '';
     include_once __DIR__.'/../Page/removableItem.php';
     foreach ($recipients as $recipient) {

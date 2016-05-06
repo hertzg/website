@@ -8,7 +8,10 @@ list($schedule, $id, $user) = require_schedule($mysqli);
 
 unset($_SESSION['schedules/view/messages']);
 
+$base = '../../';
+
 include_once '../../fns/SendForm/recipientsPage.php';
 SendForm\recipientsPage($mysqli, $user, $id, "Schedule #$id",
     "Send Schedule #$id", 'schedule', 'schedules/send/errors',
-    'schedules/send/messages', 'schedules/send/values');
+    'schedules/send/messages', 'schedules/send/values',
+    $base, "{$base}contacts/");
