@@ -2,9 +2,9 @@
 
 include_once '../../lib/defaults.php';
 
-include_once 'fns/require_valid_key.php';
+include_once 'fns/request_valid_key.php';
 include_once '../lib/mysqli.php';
-list($user, $key) = require_valid_key($mysqli);
+list($user, $key) = request_valid_key($mysqli);
 
 $base = '../';
 

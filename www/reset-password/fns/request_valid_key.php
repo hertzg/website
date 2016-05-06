@@ -1,6 +1,6 @@
 <?php
 
-function require_valid_key ($mysqli) {
+function request_valid_key ($mysqli) {
 
     $fnsDir = __DIR__.'/../../fns';
 

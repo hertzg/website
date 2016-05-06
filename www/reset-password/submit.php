@@ -5,9 +5,9 @@ include_once '../../lib/defaults.php';
 include_once '../fns/require_same_domain_referer.php';
 require_same_domain_referer('..');
 
-include_once 'fns/require_valid_key.php';
+include_once 'fns/request_valid_key.php';
 include_once '../lib/mysqli.php';
-list($user, $key) = require_valid_key($mysqli);
+list($user, $key) = request_valid_key($mysqli);
 
 include_once '../fns/redirect.php';
 if (!$user) redirect();
