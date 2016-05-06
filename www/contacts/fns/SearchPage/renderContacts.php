@@ -55,6 +55,12 @@ function renderContacts ($contacts, &$items, $params, $includes) {
                 $descriptions[] = preg_replace($regex, $replace, $phone2);
             }
 
+            $photo_id = $contact->photo_id;
+            if ($photo_id !== null) {
+                $options['image'] =
+                    "../photo/download/?id=$id&amp;photo_id=$photo_id";
+            }
+
             if ($descriptions) {
                 $description = join(' &middot; ', $descriptions);
                 $items[] = \Page\imageArrowLinkWithDescription(

@@ -26,12 +26,22 @@ function imageLink ($content, $href, $iconName, $options = []) {
         $additionalClass .= ' localNavigation-link';
     }
 
+    if (array_key_exists('image', $options)) {
+        $imageElement =
+            '<span class="image_link-image"'
+            ." style=\"background-image: url($options[image])\">"
+            .'</span>';
+    } else {
+        $imageElement = '';
+    }
+
     return
         $nameLink
         ."<a class=\"clickable link image_link$additionalClass\""
         ." href=\"$href\"$idAttribute$targetAttribute>"
             .'<span class="image_link-icon">'
                 ."<span class=\"icon $iconName\"></span>"
+                .$imageElement
             .'</span>'
             ."<span class=\"image_link-content\">$content</span>"
         .'</a>';

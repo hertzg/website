@@ -24,6 +24,12 @@ function render_contacts ($contacts, &$items, $params, $base = '') {
             if ($contact->favorite) $icon = 'favorite-contact';
             else $icon = 'contact';
 
+            $photo_id = $contact->photo_id;
+            if ($photo_id !== null) {
+                $options['image'] =
+                    "{$base}photo/download/?id=$id&amp;photo_id=$photo_id";
+            }
+
             if ($alias === '') {
                 $items[] = Page\imageArrowLink($title, $href, $icon, $options);
             } else {

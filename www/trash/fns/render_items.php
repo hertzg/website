@@ -8,6 +8,8 @@ function render_items ($deletedItems, &$items, $base, $encryption_key) {
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($deletedItems as $deletedItem) {
 
+        $id = $deletedItem->id;
+        $options = ['id' => $id];
         $type = $deletedItem->data_type;
         $data = json_decode($deletedItem->data_json);
 
@@ -22,7 +24,7 @@ function render_items ($deletedItems, &$items, $base, $encryption_key) {
             render_calculation($data, $title, $icon);
         } elseif ($type == 'contact' || $type == 'receivedContact') {
             include_once __DIR__.'/render_contact.php';
-            render_contact($data, $title, $icon);
+            render_contact($id, $data, $title, $icon, $options);
         } elseif ($type == 'event' || $type == 'receivedEvent') {
             include_once __DIR__.'/render_event.php';
             render_event($data, $title, $icon);
@@ -52,11 +54,9 @@ function render_items ($deletedItems, &$items, $base, $encryption_key) {
             render_wallet($data, $title, $icon);
         }
 
-        $id = $deletedItem->id;
-
         $items[] = Page\imageArrowLinkWithDescription($title,
             'Deleted '.export_date_ago($deletedItem->insert_time),
-            "{$base}view/?id=$id", $icon, ['id' => $id]);
+            "{$base}view/?id=$id", $icon, $options);
 
     }
 

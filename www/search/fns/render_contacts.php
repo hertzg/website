@@ -13,6 +13,8 @@ function render_contacts ($contacts, $total,
     include_once "$fnsDir/Page/imageArrowLinkWithDescription.php";
     foreach ($contacts as $contact) {
 
+        $id = $contact->id;
+
         $title = htmlspecialchars($contact->full_name);
         $alias = htmlspecialchars($contact->alias);
         $email1 = htmlspecialchars($contact->email1);
@@ -21,8 +23,9 @@ function render_contacts ($contacts, $total,
         $phone2 = htmlspecialchars($contact->phone2);
 
         $title = preg_replace($regex, $replace, $title);
-        $query = "?id=$contact->id&amp;keyword=$encodedKeyword";
+        $query = "?id=$id&amp;keyword=$encodedKeyword";
         $href = "../contacts/view/$query";
+        $options = [];
 
         if ($contact->favorite) $icon = 'favorite-contact';
         else $icon = 'contact';
@@ -44,12 +47,18 @@ function render_contacts ($contacts, $total,
             $descriptions[] = preg_replace($regex, $replace, $phone2);
         }
 
+        $photo_id = $contact->photo_id;
+        if ($photo_id !== null) {
+            $options['image'] = '../contacts/photo/download/'
+                ."?id=$id&amp;photo_id=$photo_id";
+        }
+
         if ($descriptions) {
             $description = join(' &middot; ', $descriptions);
             $items[] = Page\imageArrowLinkWithDescription(
-                $title, $description, $href, $icon);
+                $title, $description, $href, $icon, $options);
         } else {
-            $items[] = Page\imageArrowLink($title, $href, $icon);
+            $items[] = Page\imageArrowLink($title, $href, $icon, $options);
         }
 
     }

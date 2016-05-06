@@ -37,6 +37,11 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
             if ($receivedContact->favorite) $icon = 'favorite-contact';
             else $icon = 'contact';
 
+            $photo_id = $receivedContact->photo_id;
+            if ($photo_id !== null) {
+                $options['image'] = "download-photo/?id=$id&photo_id=$photo_id";
+            }
+
             $title = htmlspecialchars($receivedContact->full_name);
             $description = create_sender_description($receivedContact);
             $href = "{$base}view/".ItemList\Received\escapedItemQuery($id);
