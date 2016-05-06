@@ -64,10 +64,10 @@ include_once "$fnsDir/Captcha/reset.php";
 Captcha\reset();
 
 include_once 'fns/send_email.php';
-include_once "$fnsDir/LinkKey/random.php";
+include_once "$fnsDir/ApiKey/random.php";
 include_once "$fnsDir/Users/editResetPasswordKey.php";
 foreach ($users as $user) {
-    $key = LinkKey\random();
+    $key = ApiKey\random();
     Users\editResetPasswordKey($mysqli, $user->id_users, $key, $return);
     send_email($user, $key);
 }

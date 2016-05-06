@@ -8,16 +8,11 @@ function require_valid_key ($mysqli) {
     require_guest_user('../');
 
     include_once "$fnsDir/request_strings.php";
-    list($id_users) = request_strings('id_users');
-
-    $id_users = abs((int)$id_users);
-
-    include_once "$fnsDir/LinkKey/request.php";
-    $key = LinkKey\request();
+    list($key) = request_strings('key');
 
     include_once "$fnsDir/Users/getByResetPasswordKey.php";
-    $user = Users\getByResetPasswordKey($mysqli, $id_users, $key);
+    $user = Users\getByResetPasswordKey($mysqli, $key);
 
-    return [$user, $key, $id_users];
+    return [$user, $key];
 
 }

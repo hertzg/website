@@ -5,12 +5,7 @@ function send_email ($user, $key) {
     $fnsDir = __DIR__.'/../../fns';
 
     include_once "$fnsDir/get_absolute_base.php";
-    $href = htmlspecialchars(
-        get_absolute_base().'reset-password/?'.http_build_query([
-            'id_users' => $user->id_users,
-            'key' => bin2hex($key)
-        ])
-    );
+    $href = htmlspecialchars(get_absolute_base()."reset-password/?key=$key");
 
     $title = 'Reset Password for Zvini Account';
 

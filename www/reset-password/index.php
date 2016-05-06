@@ -4,7 +4,7 @@ include_once '../../lib/defaults.php';
 
 include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
-list($user, $key, $id_users) = require_valid_key($mysqli);
+list($user, $key) = require_valid_key($mysqli);
 
 $base = '../';
 
@@ -17,7 +17,7 @@ if (!$user) {
 
 if (!$user->email_verified) {
     include_once '../fns/Users/Email/verify.php';
-    Users\Email\verify($mysqli, $id_users);
+    Users\Email\verify($mysqli, $user->id_users);
 }
 
 include_once 'fns/get_values.php';
@@ -82,8 +82,7 @@ $content = Page\create(
             'required' => true,
         ])
         .Form\button('Reset Password')
-        ."<input type=\"hidden\" name=\"id_users\" value=\"$id_users\" />"
-        .'<input type="hidden" name="key" value="'.bin2hex($key).'" />'
+        ."<input type=\"hidden\" name=\"key\" value=\"$key\" />"
     .'</form>'
 );
 

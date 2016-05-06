@@ -27,7 +27,6 @@ function ensure ($mysqli) {
     include_once "$fnsDir/EncryptionKey/column.php";
     include_once "$fnsDir/EncryptionKey/ivColumn.php";
     include_once "$fnsDir/FullName/column.php";
-    include_once "$fnsDir/LinkKey/column.php";
     include_once "$fnsDir/Table/ensure.php";
     include_once "$fnsDir/Theme/Brightness/column.php";
     include_once "$fnsDir/Theme/Color/column.php";
@@ -155,7 +154,7 @@ function ensure ($mysqli) {
             'nullable' => true,
         ],
         'places_order_by' => $order_by_column,
-        'reset_password_key' => \LinkKey\column(true),
+        'reset_password_key' => \ApiKey\column(true),
         'reset_password_key_time' => $nullable_unsigned_bigint,
         'reset_password_return' => [
             'type' => 'varchar(2048)',

@@ -7,12 +7,10 @@ require_same_domain_referer('..');
 
 include_once 'fns/require_valid_key.php';
 include_once '../lib/mysqli.php';
-list($user, $key, $id_users) = require_valid_key($mysqli);
+list($user, $key) = require_valid_key($mysqli);
 
-if (!$user) {
-    include_once '../fns/redirect.php';
-    redirect("./?id_users=$id_users&key=".bin2hex($key));
-}
+include_once '../fns/redirect.php';
+if (!$user) redirect();
 
 include_once '../fns/request_strings.php';
 list($password, $repeatPassword) = request_strings(
@@ -22,8 +20,6 @@ include_once '../fns/check_reset_passwords.php';
 check_reset_passwords($user->username,
     $password, $repeatPassword, $errors, $focus);
 
-include_once '../fns/redirect.php';
-
 if ($errors) {
     $_SESSION['reset-password/errors'] = $errors;
     $_SESSION['reset-password/values'] = [
@@ -31,7 +27,7 @@ if ($errors) {
         'password' => $password,
         'repeatPassword' => $repeatPassword,
     ];
-    redirect("./?id_users=$id_users&key=".bin2hex($key));
+    redirect("./?key=$key");
 }
 
 unset(
@@ -40,7 +36,7 @@ unset(
 );
 
 include_once '../fns/Users/resetPassword.php';
-Users\resetPassword($mysqli, $id_users, $password, false);
+Users\resetPassword($mysqli, $user->id_users, $password, false);
 
 include_once '../fns/Cookie/set.php';
 Cookie\set('username', $user->username);
