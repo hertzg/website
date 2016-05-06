@@ -4,10 +4,12 @@ function create_view_page ($invitation, &$scripts) {
 
     $id = $invitation->id;
     $key = $invitation->key;
+    $base = '../../../';
     $fnsDir = __DIR__.'/../../../fns';
 
     include_once "$fnsDir/compressed_js_script.php";
-    $scripts = compressed_js_script('dateAgo', '../../../');
+    $scripts = compressed_js_script('dateAgo', $base)
+        .compressed_js_script('flexTextarea', $base);
 
     unset(
         $_SESSION['admin/invitations/errors'],
@@ -19,10 +21,10 @@ function create_view_page ($invitation, &$scripts) {
 
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/notes.php";
-    include_once "$fnsDir/Form/textfield.php";
+    include_once "$fnsDir/Form/textarea.php";
     $items = [
         Form\label('Identifier', $key),
-        Form\textfield('link', 'Sign up link', [
+        Form\textarea('link', 'Sign up link', [
             'value' => $signUpLink,
             'readonly' => true,
         ])
