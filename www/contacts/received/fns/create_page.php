@@ -32,19 +32,21 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         foreach ($receivedContacts as $receivedContact) {
 
             $id = $receivedContact->id;
-            $options = ['id' => $id];
-            $icon = 'none';
 
             $photo_id = $receivedContact->photo_id;
             if ($photo_id === null) $image = '../../images/empty-photo.svg';
             else $image = "download-photo/?id=$id&photo_id=$photo_id";
-            $options['image'] = $image;
+
+            $options = [
+                'id' => $id,
+                'image' => $image,
+            ];
 
             $title = htmlspecialchars($receivedContact->full_name);
             $description = create_sender_description($receivedContact);
             $href = "{$base}view/".ItemList\Received\escapedItemQuery($id);
-            $items[] = Page\imageArrowLinkWithDescription($title,
-                $description, $href, $icon, $options);
+            $items[] = Page\imageArrowLinkWithDescription(
+                $title, $description, $href, 'none', $options);
 
         }
 

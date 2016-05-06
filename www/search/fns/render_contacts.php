@@ -25,7 +25,6 @@ function render_contacts ($contacts, $total,
         $title = preg_replace($regex, $replace, $title);
         $query = "?id=$id&amp;keyword=$encodedKeyword";
         $href = "../contacts/view/$query";
-        $options = [];
         $icon = 'none';
 
         $descriptions = [];
@@ -52,7 +51,8 @@ function render_contacts ($contacts, $total,
             $image = '../contacts/photo/download/'
                 ."?id=$id&amp;photo_id=$photo_id";
         }
-        $options['image'] = $image;
+
+        $options = ['image' => $image];
 
         if ($descriptions) {
             $description = join(' &middot; ', $descriptions);

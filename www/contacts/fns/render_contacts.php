@@ -10,7 +10,6 @@ function render_contacts ($contacts, &$items, $params, $base = '') {
         foreach ($contacts as $contact) {
 
             $id = $contact->id;
-            $options = ['id' => $id];
             $queryString = htmlspecialchars(
                 http_build_query(
                     array_merge(['id' => $id], $params)
@@ -28,7 +27,11 @@ function render_contacts ($contacts, &$items, $params, $base = '') {
             } else {
                 $image = "{$base}photo/download/?id=$id&amp;photo_id=$photo_id";
             }
-            $options['image'] = $image;
+
+            $options = [
+                'id' => $id,
+                'image' => $image,
+            ];
 
             if ($alias === '') {
                 $items[] = Page\imageArrowLink($title, $href, $icon, $options);

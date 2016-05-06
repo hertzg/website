@@ -18,7 +18,6 @@ function renderContacts ($contacts, &$items, $params, $includes) {
         foreach ($contacts as $contact) {
 
             $id = $contact->id;
-            $options = ['id' => $id];
             $queryString = htmlspecialchars(
                 http_build_query(
                     array_merge(['id' => $id], $params)
@@ -56,7 +55,11 @@ function renderContacts ($contacts, &$items, $params, $includes) {
             $photo_id = $contact->photo_id;
             if ($photo_id === null) $image = "../../images/empty-photo.svg";
             else $image = "../photo/download/?id=$id&amp;photo_id=$photo_id";
-            $options['image'] = $image;
+
+            $options = [
+                'id' => $id,
+                'image' => $image,
+            ];
 
             if ($descriptions) {
                 $description = join(' &middot; ', $descriptions);
