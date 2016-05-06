@@ -7,7 +7,7 @@ require_same_domain_referer('..');
 
 include_once 'fns/request_invitation.php';
 include_once '../lib/mysqli.php';
-list($invitation, $key, $id) = request_invitation($mysqli);
+list($invitation, $key) = request_invitation($mysqli);
 
 include_once '../fns/redirect.php';
 if (!$invitation) redirect();
@@ -42,7 +42,7 @@ if ($errors) {
         'repeatPassword' => $repeatPassword,
         'email' => $email,
     ];
-    redirect("./?id=$id&key=".bin2hex($key));
+    redirect("./?key=$key");
 }
 
 unset(
@@ -55,7 +55,7 @@ Users\Account\create($mysqli, $username,
     $password, $email, '', 0, false, false, false);
 
 include_once '../fns/Invitations/delete.php';
-Invitations\delete($mysqli, $id);
+Invitations\delete($mysqli, $invitation->id);
 
 include_once '../fns/Cookie/set.php';
 Cookie\set('username', $username);

@@ -4,11 +4,10 @@ namespace Invitations;
 
 function add ($mysqli, $note, $insertApiKey) {
 
-    include_once __DIR__.'/../LinkKey/random.php';
-    $key = \LinkKey\random();
+    include_once __DIR__.'/../ApiKey/random.php';
+    $key = \ApiKey\random();
 
     $note = $mysqli->real_escape_string($note);
-    $key = $mysqli->real_escape_string($key);
     $insert_time = $update_time = time();
     if ($insertApiKey === null) {
         $insert_api_key_id = $insert_api_key_name = 'null';

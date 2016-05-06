@@ -12,7 +12,7 @@ function render_invitations ($invitations, &$items, $base = '') {
         $href = "{$base}view/?id=$id";
         $icon = 'invitation';
         $options = ['id' => $id];
-        $key = bin2hex($invitation->key);
+        $key = $invitation->key;
         if ($note === '') {
             $link = Page\imageArrowLink($key, $href, $icon, $options);
         } else {

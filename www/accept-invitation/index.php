@@ -4,7 +4,7 @@ include_once '../../lib/defaults.php';
 
 include_once 'fns/request_invitation.php';
 include_once '../lib/mysqli.php';
-list($invitation, $key, $id) = request_invitation($mysqli);
+list($invitation, $key) = request_invitation($mysqli);
 
 $base = '../';
 
@@ -75,8 +75,7 @@ $content = Page\create(
         ])
         .Form\notes(['Optional. Used for password recovery.'])
         .Form\button('Sign Up')
-        ."<input type=\"hidden\" name=\"id\" value=\"$id\" />"
-        .'<input type="hidden" name="key" value="'.bin2hex($key).'" />'
+        ."<input type=\"hidden\" name=\"key\" value=\"$key\" />"
     .'</form>'
 );
 

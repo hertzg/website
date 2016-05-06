@@ -13,10 +13,10 @@ function create_view_page ($invitation, &$scripts) {
         $_SESSION['admin/invitations/messages']
     );
 
-    $key = bin2hex($invitation->key);
+    $key = $invitation->key;
 
     include_once "$fnsDir/get_absolute_base.php";
-    $signUpLink = get_absolute_base()."accept-invitation/?id=$id&key=$key";
+    $signUpLink = get_absolute_base()."accept-invitation/?key=$key";
 
     include_once "$fnsDir/Form/label.php";
     include_once "$fnsDir/Form/notes.php";

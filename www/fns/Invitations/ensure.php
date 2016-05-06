@@ -15,7 +15,7 @@ function ensure ($mysqli) {
     $apiKeyNameColumn = \ApiKeyName\column(true);
 
     include_once __DIR__.'/maxLengths.php';
-    include_once "$fnsDir/LinkKey/column.php";
+    include_once "$fnsDir/ApiKey/column.php";
     include_once "$fnsDir/Table/ensure.php";
     return \Table\ensure($mysqli, 'invitations', [
         'note' => [
@@ -30,7 +30,7 @@ function ensure ($mysqli) {
         'insert_api_key_id' => $nullable_unsigned_bigint,
         'insert_api_key_name' => $apiKeyNameColumn,
         'insert_time' => ['type' => 'bigint(20) unsigned'],
-        'key' => \LinkKey\column(),
+        'key' => \ApiKey\column(),
         'revision' => ['type' => 'bigint(20) unsigned'],
         'update_api_key_id' => $nullable_unsigned_bigint,
         'update_api_key_name' => $apiKeyNameColumn,

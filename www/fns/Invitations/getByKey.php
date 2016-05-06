@@ -2,11 +2,9 @@
 
 namespace Invitations;
 
-function getByKey ($mysqli, $id, $key) {
-
-    include_once __DIR__.'/get.php';
-    $invitation = get($mysqli, $id);
-
-    if ($invitation && $invitation->key == $key) return $invitation;
-
+function getByKey ($mysqli, $key) {
+    $key = $mysqli->real_escape_string($key);
+    $sql = "select * from invitations where `key` = '$key'";
+    include_once __DIR__.'/../mysqli_single_object.php';
+    return mysqli_single_object($mysqli, $sql);
 }
