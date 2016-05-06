@@ -9,6 +9,9 @@ include_once 'fns/require_invitation.php';
 include_once '../lib/mysqli.php';
 list($invitation, $key, $id) = require_invitation($mysqli);
 
+include_once '../fns/redirect.php';
+if (!$invitation) redirect();
+
 include_once '../fns/Username/request.php';
 $username = Username\request();
 
@@ -29,8 +32,6 @@ check_passwords($username, $password, $repeatPassword, $errors, $focus);
 
 include_once '../fns/check_email.php';
 check_email($email, $errors, $focus);
-
-include_once '../fns/redirect.php';
 
 if ($errors) {
     $_SESSION['accept-invitation/errors'] = $errors;
