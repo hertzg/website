@@ -20,15 +20,15 @@ function render_contacts ($contacts, &$items, $params, $base = '') {
 
             $alias = htmlspecialchars($contact->alias);
             $title = htmlspecialchars($contact->full_name);
-
-            if ($contact->favorite) $icon = 'favorite-contact';
-            else $icon = 'contact';
+            $icon = 'none';
 
             $photo_id = $contact->photo_id;
-            if ($photo_id !== null) {
-                $options['image'] =
-                    "{$base}photo/download/?id=$id&amp;photo_id=$photo_id";
+            if ($photo_id === null) {
+                $image = "{$base}../images/empty-photo.svg";
+            } else {
+                $image = "{$base}photo/download/?id=$id&amp;photo_id=$photo_id";
             }
+            $options['image'] = $image;
 
             if ($alias === '') {
                 $items[] = Page\imageArrowLink($title, $href, $icon, $options);

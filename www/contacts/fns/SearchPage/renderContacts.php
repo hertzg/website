@@ -34,9 +34,7 @@ function renderContacts ($contacts, &$items, $params, $includes) {
             $phone2 = htmlspecialchars($contact->phone2);
 
             $title = preg_replace($regex, $replace, $title);
-
-            if ($contact->favorite) $icon = 'favorite-contact';
-            else $icon = 'contact';
+            $icon = 'none';
 
             $descriptions = [];
             if ($alias !== '') {
@@ -56,10 +54,9 @@ function renderContacts ($contacts, &$items, $params, $includes) {
             }
 
             $photo_id = $contact->photo_id;
-            if ($photo_id !== null) {
-                $options['image'] =
-                    "../photo/download/?id=$id&amp;photo_id=$photo_id";
-            }
+            if ($photo_id === null) $image = "../../images/empty-photo.svg";
+            else $image = "../photo/download/?id=$id&amp;photo_id=$photo_id";
+            $options['image'] = $image;
 
             if ($descriptions) {
                 $description = join(' &middot; ', $descriptions);

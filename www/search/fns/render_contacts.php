@@ -26,9 +26,7 @@ function render_contacts ($contacts, $total,
         $query = "?id=$id&amp;keyword=$encodedKeyword";
         $href = "../contacts/view/$query";
         $options = [];
-
-        if ($contact->favorite) $icon = 'favorite-contact';
-        else $icon = 'contact';
+        $icon = 'none';
 
         $descriptions = [];
         if ($alias !== '') {
@@ -48,10 +46,13 @@ function render_contacts ($contacts, $total,
         }
 
         $photo_id = $contact->photo_id;
-        if ($photo_id !== null) {
-            $options['image'] = '../contacts/photo/download/'
+        if ($photo_id === null) {
+            $image = '../images/empty-photo.svg';
+        } else {
+            $image = '../contacts/photo/download/'
                 ."?id=$id&amp;photo_id=$photo_id";
         }
+        $options['image'] = $image;
 
         if ($descriptions) {
             $description = join(' &middot; ', $descriptions);

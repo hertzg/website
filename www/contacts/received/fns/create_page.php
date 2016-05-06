@@ -33,14 +33,12 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
 
             $id = $receivedContact->id;
             $options = ['id' => $id];
-
-            if ($receivedContact->favorite) $icon = 'favorite-contact';
-            else $icon = 'contact';
+            $icon = 'none';
 
             $photo_id = $receivedContact->photo_id;
-            if ($photo_id !== null) {
-                $options['image'] = "download-photo/?id=$id&photo_id=$photo_id";
-            }
+            if ($photo_id === null) $image = '../../images/empty-photo.svg';
+            else $image = "download-photo/?id=$id&photo_id=$photo_id";
+            $options['image'] = $image;
 
             $title = htmlspecialchars($receivedContact->full_name);
             $description = create_sender_description($receivedContact);
