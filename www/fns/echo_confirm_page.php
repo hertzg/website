@@ -1,13 +1,13 @@
 <?php
 
-function echo_confirm_page ($title, $text,
+function echo_confirm_page ($user, $title, $text,
     $yes_text, $yes_href, $no_text, $no_href, $base) {
 
     include_once __DIR__.'/compressed_css_link.php';
     $head = compressed_css_link('confirmDialog', $base);
 
     include_once __DIR__.'/resolve_theme.php';
-    resolve_theme(null, $theme_color, $theme_brightness);
+    resolve_theme($user, $theme_color, $theme_brightness);
 
     include_once __DIR__.'/Page/imageLink.php';
     include_once __DIR__.'/Page/text.php';
