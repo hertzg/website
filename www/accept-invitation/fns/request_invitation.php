@@ -1,6 +1,6 @@
 <?php
 
-function require_invitation ($mysqli) {
+function request_invitation ($mysqli) {
 
     $fnsDir = __DIR__.'/../../fns';
 

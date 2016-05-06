@@ -5,9 +5,9 @@ include_once '../../lib/defaults.php';
 include_once '../fns/require_same_domain_referer.php';
 require_same_domain_referer('..');
 
-include_once 'fns/require_invitation.php';
+include_once 'fns/request_invitation.php';
 include_once '../lib/mysqli.php';
-list($invitation, $key, $id) = require_invitation($mysqli);
+list($invitation, $key, $id) = request_invitation($mysqli);
 
 include_once '../fns/redirect.php';
 if (!$invitation) redirect();

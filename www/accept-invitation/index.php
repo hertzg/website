@@ -2,15 +2,11 @@
 
 include_once '../../lib/defaults.php';
 
-include_once 'fns/require_invitation.php';
+include_once 'fns/request_invitation.php';
 include_once '../lib/mysqli.php';
-list($invitation, $key, $id) = require_invitation($mysqli);
-
-include_once 'fns/get_values.php';
-$values = get_values();
+list($invitation, $key, $id) = request_invitation($mysqli);
 
 $base = '../';
-$focus = $values['focus'];
 
 if (!$invitation) {
     include_once '../fns/echo_alert_page.php';
@@ -18,6 +14,11 @@ if (!$invitation) {
         'You cannot create an account with this link. The link has expired.',
         '..', $base);
 }
+
+include_once 'fns/get_values.php';
+$values = get_values();
+
+$focus = $values['focus'];
 
 include_once '../fns/example_password.php';
 include_once '../fns/Email/maxLength.php';
