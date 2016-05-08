@@ -40,4 +40,9 @@ function set ($mysqli, $contact, $image) {
         \ContactPhotos\delete($mysqli, $old_photo_id);
     }
 
+    if ($contact->num_tags) {
+        include_once "$fnsDir/ContactTags/editContactPhoto.php";
+        \ContactTags\editContactPhoto($mysqli, $contact->id, $photo_id);
+    }
+
 }

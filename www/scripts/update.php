@@ -12,4 +12,6 @@ echo Tables\ensureAll($mysqli);
 include_once '../fns/write_crontab.php';
 write_crontab();
 
+system('./update-tag-refs.php');
+
 echo "Done\n";

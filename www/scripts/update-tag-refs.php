@@ -61,8 +61,8 @@ foreach ($rows as $row) {
             $contact->id, $contact->full_name, $contact->alias,
             $contact->email1, $contact->email1_label, $contact->email2,
             $contact->email2_label, $contact->phone1, $contact->phone1_label,
-            $contact->phone2, $contact->phone2_label, $contact->favorite,
-            $contact->insert_time, $contact->update_time);
+            $contact->phone2, $contact->phone2_label, $contact->photo_id,
+            $contact->favorite, $contact->insert_time, $contact->update_time);
     }
 }
 

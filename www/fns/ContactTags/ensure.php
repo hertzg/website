@@ -54,6 +54,10 @@ function ensure ($mysqli) {
         'phone1_label' => $phone_label_column,
         'phone2' => $phone_column,
         'phone2_label' => $phone_label_column,
+        'photo_id' => [
+            'type' => 'bigint(20) unsigned',
+            'nullable' => true,
+        ],
         'tag_name' => \TagName\column(),
         'update_time' => ['type' => 'bigint(20) unsigned'],
     ]);

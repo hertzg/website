@@ -14,5 +14,10 @@ function delete ($mysqli, $contact) {
         include_once "$fnsDir/ContactPhotos/delete.php";
         \ContactPhotos\delete($mysqli, $photo_id);
 
+        if ($contact->num_tags) {
+            include_once "$fnsDir/ContactTags/deleteContactPhoto.php";
+            \ContactTags\deleteContactPhoto($mysqli, $contact->id);
+        }
+
     }
 }
