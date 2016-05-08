@@ -2,7 +2,7 @@
 
     var dialogShown = false
 
-    var emptyLink = document.getElementById('emptyLink').firstChild
+    var emptyLink = document.getElementById('empty-trash')
     emptyLink.addEventListener('click', function (e) {
         e.preventDefault()
         emptyLink.blur()

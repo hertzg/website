@@ -21,10 +21,8 @@ function create_page ($mysqli, $user, &$scripts, $base = '') {
         render_items($deletedItems, $items, $base, $encryption_key);
 
         include_once "$fnsDir/Page/imageLink.php";
-        $emptyLink =
-            '<div id="emptyLink">'
-                .Page\imageLink('Empty Trash', "{$base}empty/", 'empty-trash')
-            .'</div>';
+        $emptyLink = Page\imageLink('Empty Trash',
+            "{$base}empty/", 'empty-trash', ['id' => 'empty-trash']);
 
         include_once "$fnsDir/Page/panel.php";
         $optionsPanel = Page\panel('Options', $emptyLink);
