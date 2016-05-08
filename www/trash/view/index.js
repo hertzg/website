@@ -2,7 +2,7 @@
 
     var dialogShown = false
 
-    var purgeLink = document.getElementById('purgeLink').firstChild
+    var purgeLink = document.getElementById('purge')
     purgeLink.addEventListener('click', function (e) {
         e.preventDefault()
         purgeLink.blur()

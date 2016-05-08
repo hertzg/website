@@ -22,5 +22,5 @@ echo_user_page($user, $title, $content, $base, [
         .'<script type="text/javascript">'
             .'var purgeHref = '.json_encode("../purge/submit.php?id=$id")
         .'</script>'
-        .'<script type="text/javascript" src="index.js?2"></script>',
+        .'<script type="text/javascript" src="index.js?3"></script>',
 ]);
