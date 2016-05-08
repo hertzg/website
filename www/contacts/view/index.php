@@ -28,7 +28,7 @@ if ($contact->photo_id) {
         '<script type="text/javascript">'
             .'var deletePhotoHref = '.json_encode($deletePhotoHref)
         .'</script>'
-        .'<script type="text/javascript" src="index.js"></script>';
+        .'<script type="text/javascript" src="index.js?1"></script>';
 }
 
 include_once "$fnsDir/compressed_css_link.php";

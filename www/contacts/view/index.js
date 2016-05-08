@@ -2,7 +2,7 @@
 
     var dialogShown = false
 
-    var deletePhotoLink = document.getElementById('deletePhotoLink').firstChild
+    var deletePhotoLink = document.getElementById('delete-photo')
     deletePhotoLink.addEventListener('click', function (e) {
         e.preventDefault()
         deletePhotoLink.blur()
