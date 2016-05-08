@@ -25,5 +25,5 @@ echo_user_page($user, "Other Channel #$id", $content, $base, [
         .'<script type="text/javascript">'
             .'var unsubscribeHref = '.json_encode($unsubscribeHref)
         .'</script>'
-        .'<script type="text/javascript" src="index.js"></script>',
+        .'<script type="text/javascript" src="index.js?1"></script>',
 ]);

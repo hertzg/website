@@ -20,11 +20,8 @@ function optionsPanel ($subscribedChannel) {
     }
 
     if ($subscribedChannel->subscriber_locked) {
-        $href = "../unsubscribe/?id=$id";
-        $items[] =
-            '<div id="unsubscribeLink">'
-                .\Page\imageLink('Unsubscribe', $href, 'trash-bin')
-            .'</div>';
+        $items[] = \Page\imageLink('Unsubscribe',
+            "../unsubscribe/?id=$id", 'trash-bin', ['id' => 'unsubscribe']);
     } elseif ($subscribedChannel->channel_public &&
         !$subscribedChannel->subscriber_locked) {
 

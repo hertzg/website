@@ -2,7 +2,7 @@
 
     var dialogShown = false
 
-    var unsubscribeLink = document.getElementById('unsubscribeLink').firstChild
+    var unsubscribeLink = document.getElementById('unsubscribe')
     unsubscribeLink.addEventListener('click', function (e) {
         e.preventDefault()
         unsubscribeLink.blur()
