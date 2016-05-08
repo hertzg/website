@@ -47,13 +47,11 @@ function Page (localNavigation, revisions,
                 Element(div, 'div', function (div) {
                     div.className = 'page-clockWrapper'
                     Element(div, 'div', function (div) {
-                        div.id = 'staticClockWrapper'
-                    })
-                    Element(div, 'div', function (div) {
                         div.id = 'batteryWrapper'
                     })
                     Element(div, 'div', function (div) {
-                        div.id = 'dynamicClockWrapper'
+                        div.id = 'clockWrapper'
+                        Text(div, '00:00:00')
                     })
                 })
                 if (user) {

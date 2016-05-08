@@ -186,15 +186,13 @@ function Clock (remoteTime, timezone) {
 
     var secondNode = TextNode('')
 
-    var dynamicClockWrapper = document.getElementById('dynamicClockWrapper')
-    dynamicClockWrapper.appendChild(hourNode)
-    dynamicClockWrapper.appendChild(TextNode(':'))
-    dynamicClockWrapper.appendChild(minuteNode)
-    dynamicClockWrapper.appendChild(TextNode(':'))
-    dynamicClockWrapper.appendChild(secondNode)
-
-    var staticClockWrapper = document.getElementById('staticClockWrapper')
-    staticClockWrapper.parentNode.removeChild(staticClockWrapper)
+    var clockWrapper = document.getElementById('clockWrapper')
+    clockWrapper.removeChild(clockWrapper.firstChild)
+    clockWrapper.appendChild(hourNode)
+    clockWrapper.appendChild(TextNode(':'))
+    clockWrapper.appendChild(minuteNode)
+    clockWrapper.appendChild(TextNode(':'))
+    clockWrapper.appendChild(secondNode)
 
     update()
 

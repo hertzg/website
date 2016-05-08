@@ -4,7 +4,7 @@ function get_revisions () {
     return [
         'css/barChart/compressed.css' => 8,
         'css/calendarIcon/compressed.css' => 4,
-        'css/common/compressed.css' => 174,
+        'css/common/compressed.css' => 175,
         'css/confirmDialog/compressed.css' => 5,
         'css/contact/compressed.css' => 5,
         'css/iconsets/compressed.css' => 103,
@@ -24,7 +24,7 @@ function get_revisions () {
         'js/sessionTimeout/compressed.js' => 6,
         'js/signOutConfirm/compressed.js' => 4,
         'js/timezoneLabel/compressed.js' => 6,
-        'js/ui/compressed.js' => 25,
+        'js/ui/compressed.js' => 26,
         'js/unloadProgress/compressed.js' => 13,
         'theme/brightness/dark/common.css' => 13,
         'theme/brightness/light/common.css' => 13,

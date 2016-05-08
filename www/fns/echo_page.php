@@ -95,11 +95,10 @@ function echo_page ($user, $title, $content, $base, $options = []) {
                     .$notifications
                 .'</a>'
                 .'<div class="page-clockWrapper">'
-                    .'<div id="staticClockWrapper">'
+                    .'<div id="batteryWrapper"></div>'
+                    .'<div id="clockWrapper">'
                         .date('H:i:s', $time / 1000)
                     .'</div>'
-                    .'<div id="batteryWrapper"></div>'
-                    .'<div id="dynamicClockWrapper"></div>'
                 .'</div>'
                 .$signOutLink
             .'</div>'
