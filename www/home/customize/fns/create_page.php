@@ -36,10 +36,8 @@ function create_page (&$head, $base = '') {
             ]
         )
         .'<div class="hr"></div>'
-        .'<div id="restoreLink">'
-            .Page\imageLink('Restore Defaults',
-                "{$base}restore-defaults/", 'restore-defaults')
-        .'</div>'
+        .Page\imageLink('Restore Defaults', "{$base}restore-defaults/",
+            'restore-defaults', ['id' => 'restore-defaults'])
     );
 
 }

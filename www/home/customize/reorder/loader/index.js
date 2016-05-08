@@ -48,11 +48,10 @@
                     ui.Text(div, 'Change the visibility of the items.')
                 }, '../show-hide/', 'show-hide', { localNavigation: true })
                 ui.Hr(div)
-                ui.Element(div, 'div', function (div) {
-                    div.id = 'restoreLink'
-                    ui.Page_imageLink(div, function (div) {
-                        ui.Text(div, 'Restore Defaults')
-                    }, 'restore-defaults/', 'restore-defaults')
+                ui.Page_imageLink(div, function (div) {
+                    ui.Text(div, 'Restore Defaults')
+                }, 'restore-defaults/', 'restore-defaults', {
+                    id: 'restore-defaults',
                 })
             })
         }, {

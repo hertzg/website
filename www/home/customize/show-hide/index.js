@@ -2,7 +2,7 @@
 
     var dialogShown = false
 
-    var restoreLink = document.getElementById('restoreLink').firstChild
+    var restoreLink = document.getElementById('restore-defaults')
     restoreLink.addEventListener('click', function (e) {
         e.preventDefault()
         restoreLink.blur()
