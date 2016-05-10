@@ -95,7 +95,13 @@ function echo_page ($user, $title, $content, $base, $options = []) {
                     .$notifications
                 .'</a>'
                 .'<div class="page-clockWrapper">'
-                    .'<div id="batteryWrapper"></div>'
+                    .'<div id="batteryWrapper">'
+                        .'<div class="battery-border">'
+                            .'<img class="battery-image" alt="?"'
+                            ." src=\"{$base}images/question.svg\" />"
+                        .'</div>'
+                        .'<div class="battery-plus"></div>'
+                    .'</div>'
                     .'<div id="clockWrapper">'
                         .date('H:i:s', $time / 1000)
                     .'</div>'

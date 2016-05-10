@@ -1,0 +1,59 @@
+.battery-border {
+    text-align: right;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    bottom: 3px;
+    left: 2px;
+    line-height: 7px;
+    border: 1px solid #ccc;
+    padding: 1px;
+    border-radius: 1px;
+}
+.battery-border.low {
+    background-color: #ee2020;
+}
+
+.battery-plus {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 30%;
+    margin: auto;
+    background-color: #ccc;
+    width: 2px;
+}
+.battery-plus.low {
+    background-color: #ee2020;
+}
+
+.battery-value {
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    background-color: #ccc;
+}
+.battery-value.low {
+    background-color: #ee2020;
+}
+
+.battery-image {
+    display: inline-block;
+    vertical-align: top;
+    position: absolute;
+    top: -1px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 9px;
+    height: 11px;
+    line-height: 11px;
+    background-repeat: no-repeat;
+    color: #444;
+    text-align: center;
+    font-size: 11px;
+}
+.battery-image.hidden {
+    display: none;
+}

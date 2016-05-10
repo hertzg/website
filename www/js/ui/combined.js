@@ -254,10 +254,34 @@ function Page (localNavigation, revisions,
                     div.className = 'page-clockWrapper'
                     Element(div, 'div', function (div) {
                         div.id = 'batteryWrapper'
+                        Element(div, 'div', function (div) {
+                            div.className = 'battery-border'
+                            Element(div, 'img', function (img) {
+                                img.className = 'battery-image'
+                                img.alt = '?'
+                                img.src = base + 'images/question.svg'
+                            })
+                        })
+                        Element(div, 'div', function (div) {
+                            div.className = 'battery-plus'
+                        })
                     })
                     Element(div, 'div', function (div) {
+
+                        function pad (n) {
+                            n = String(n)
+                            if (n.length === 1) n = '0' + n
+                            return n
+                        }
+
+                        var date = new Date(response.time)
+                        var text = pad(date.getUTCHours()) + ':' +
+                            pad(date.getUTCMinutes()) + ':' +
+                            pad(date.getUTCSeconds())
+
                         div.id = 'clockWrapper'
-                        Text(div, '00:00:00')
+                        Text(div, text)
+
                     })
                 })
                 if (user) {
