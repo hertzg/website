@@ -11,7 +11,7 @@
     border-radius: 1px;
 }
 .battery-border.low {
-    background-color: #ee2020;
+    border-color: #ee2020;
 }
 
 .battery-plus {
