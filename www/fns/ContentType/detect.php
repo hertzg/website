@@ -18,6 +18,7 @@ function detect ($name) {
         'ogv' => 'video/ogg',
         'png' => 'image/png',
         'svg' => 'image/svg+xml',
+        'txt' => 'text/plain',
         'wav' => 'audio/wav',
         'zip' => 'application/zip',
         'zipx' => 'application/zip',

@@ -7,7 +7,7 @@ function column () {
         'type' => "enum('application/gpx+xml','application/octet-stream',"
             ."'application/zip','audio/flac','audio/mp3',"
             ."'audio/wav','image/bmp','image/gif','image/jpeg',"
-            ."'image/png','image/svg+xml','video/mp4',"
+            ."'image/png','image/svg+xml','text/plain','video/mp4',"
             ."'audio/ogg','video/3gpp','video/ogg')",
         'characterSet' => 'ascii',
         'collation' => 'ascii_bin',
