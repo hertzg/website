@@ -17,6 +17,8 @@ function detect ($name) {
         'png' => 'image/png',
         'svg' => 'image/svg+xml',
         'wav' => 'audio/wav',
+        'zip' => 'application/zip',
+        'zipx' => 'application/zip',
     ];
     $extension = pathinfo($name, PATHINFO_EXTENSION);
     $extension = strtolower($extension);
