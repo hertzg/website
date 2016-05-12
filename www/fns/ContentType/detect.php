@@ -4,6 +4,7 @@ namespace ContentType;
 
 function detect ($name) {
     static $contentTypes = [
+        '3gp' => 'video/3gpp',
         'bmp' => 'image/bmp',
         'gif' => 'image/gif',
         'gpx' => 'application/gpx+xml',

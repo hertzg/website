@@ -14,7 +14,7 @@ function detect ($name) {
     $regex = '/^css|html?|ini|js|md|php|sh|txt|xml$/';
     if (preg_match($regex, $extension)) return 'text';
 
-    if (preg_match('/^mp4|ogg|ogv$/', $extension)) return 'video';
+    if (preg_match('/^3gp|mp4|ogg|ogv$/', $extension)) return 'video';
     return 'unknown';
 
 }
