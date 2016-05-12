@@ -11,6 +11,7 @@ function detect ($name) {
         'flac' => 'audio/flac',
         'jpeg' => 'image/jpeg',
         'jpg' => 'image/jpeg',
+        'mov' => 'video/quicktime',
         'mp3' => 'audio/mp3',
         'mp4' => 'video/mp4',
         'oga' => 'audio/ogg',
