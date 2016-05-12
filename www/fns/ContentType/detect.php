@@ -6,6 +6,7 @@ function detect ($name) {
     static $contentTypes = [
         'bmp' => 'image/bmp',
         'gif' => 'image/gif',
+        'gpx' => 'application/gpx+xml',
         'flac' => 'audio/flac',
         'jpeg' => 'image/jpeg',
         'jpg' => 'image/jpeg',
