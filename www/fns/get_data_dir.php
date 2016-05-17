@@ -1,5 +1,5 @@
 <?php
 
 function get_data_dir () {
-    return __DIR__.'/../data';
+    return dirname(__DIR__).'/data';
 }
