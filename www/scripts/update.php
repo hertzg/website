@@ -12,6 +12,4 @@ echo Tables\ensureAll($mysqli);
 include_once '../fns/write_crontab.php';
 write_crontab();
 
-system('./update-file-meta.php');
-
 echo "Done\n";
