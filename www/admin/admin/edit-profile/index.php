@@ -34,7 +34,7 @@ include_once "$fnsDir/Username/maxLength.php";
 include_once "$fnsDir/Username/minLength.php";
 $content = Page\create(
     [
-        'title' => 'Administrator',
+        'title' => 'Emergency User',
         'href' => '../#edit-profile',
     ],
     'Edit Profile',

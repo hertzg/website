@@ -10,7 +10,7 @@ function create_steps () {
     ], 'Requirements', [
         'General Information',
         'MySQL Settings',
-        'Administrator',
+        'Emergency User',
         'Finalize Installation',
     ]);
 }

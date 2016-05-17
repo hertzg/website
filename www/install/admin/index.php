@@ -36,14 +36,14 @@ include_once '../../fns/Password/minLength.php';
 include_once '../../fns/Username/maxLength.php';
 include_once '../../fns/Username/minLength.php';
 echo_page(
-    'Step 5 - Administrator',
+    'Step 5 - Emergency User',
     '<form action="submit.php" method="post">'
         .wizard_layout(
             create_steps(),
             '<span class="title-step">Step 5</span>'
-            .'<h2>Administrator</h2>'
+            .'<h2>Emergency User</h2>'
             .'<div style="margin-bottom: 12px">'
-                .'This is an emergency user that will let you administer'
+                .'The emergency user will let you administer'
                 .' this Zvini instance even when it\'s experiencing a'
                 .' misconfiguration or its MySQL server is down.'
             .'</div>'

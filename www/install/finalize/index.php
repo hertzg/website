@@ -42,7 +42,7 @@ $doneSteps = [
         'href' => '../mysql-settings/',
     ],
     [
-        'title' => 'Administrator',
+        'title' => 'Emergency User',
         'href' => '../admin/',
     ],
 ];

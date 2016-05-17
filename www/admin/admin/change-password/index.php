@@ -36,7 +36,7 @@ include_once "$fnsDir/Page/sessionErrors.php";
 include_once "$fnsDir/Password/minLength.php";
 $content = Page\create(
     [
-        'title' => 'Administrator',
+        'title' => 'Emergency User',
         'href' => '../#change-password',
     ],
     'Change Password',

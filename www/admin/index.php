@@ -36,7 +36,7 @@ $content = Page\sessionMessages('admin/messages')
     )
     .'<div class="hr"></div>'
     .Page\twoColumns(
-        Page\imageArrowLink('Administrator',
+        Page\imageArrowLink('Emergency User',
             'admin/', 'generic', ['id' => 'admin']),
         Page\imageArrowLink('Ensure Crontab',
             'ensure-crontab/', 'generic', ['id' => 'ensure-crontab'])

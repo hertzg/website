@@ -43,7 +43,7 @@ $doneSteps = [
         'href' => '../general-info/',
     ],
 ];
-$nextSteps = ['Administrator', 'Finalize Installation'];
+$nextSteps = ['Emergency User', 'Finalize Installation'];
 
 include_once '../fns/echo_page.php';
 include_once '../fns/field_columns.php';

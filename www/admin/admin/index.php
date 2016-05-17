@@ -29,10 +29,10 @@ $content =
             'title' => 'Administration',
             'href' => '../#admin',
         ],
-        'Administrator',
+        'Emergency User',
         Page\sessionMessages('admin/admin/messages')
         .Page\text(
-            'This is an emergency user that will let you administer'
+            'The emergency user will let you administer'
             .' this Zvini instance even when it\'s experiencing a'
             .' misconfiguration or its MySQL server is down.'
         )
@@ -49,4 +49,4 @@ $content =
     );
 
 include_once '../fns/echo_admin_page.php';
-echo_admin_page($admin_user, 'Administrator', $content, '../');
+echo_admin_page($admin_user, 'Emergency User', $content, '../');
